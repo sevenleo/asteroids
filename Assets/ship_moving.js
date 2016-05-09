@@ -14,7 +14,6 @@ function Update () {
     var pitch = Input.GetAxis("Pitch");
     var yaw = Input.GetAxis("Yaw");
     var strafe = Vector3(Input.GetAxis("Horizontal")*strafeSpeed*Time.deltaTime, Input.GetAxis("Vertical")*strafeSpeed*Time.deltaTime, 0);
-
     var power = Input.GetAxis("Power");
 
     //Truespeed controls
