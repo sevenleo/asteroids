@@ -3,9 +3,9 @@ using System.Collections;
 
 public class moveSpeed : MonoBehaviour {
 
-    public float speed = 0.001f;
+    public float speed = 0.1f;
     public GameObject ship;
-    public GameObject camera;
+   
     Vector3 impulse;
 
     void Start () {
@@ -14,13 +14,15 @@ public class moveSpeed : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
         impulse = new Vector3(0, 0, speed);
 
         if (Input.GetKey(KeyCode.LeftControl)) {
             //this.transform.position -= speed * transform.forward;
             //ship.GetComponent<Rigidbody>().AddForce(-impulse);
             //speed -= 5; 
-            ship.transform.position -= impulse;
+            //ship.transform.position -= impulse;
         }
             
 
@@ -28,7 +30,7 @@ public class moveSpeed : MonoBehaviour {
             //this.transform.position += speed * transform.forward;
             //ship.GetComponent<Rigidbody>().AddForce(impulse);
             // speed += 5;
-            ship.transform.position += impulse;
+            //ship.transform.position += impulse;
         }
            
     }

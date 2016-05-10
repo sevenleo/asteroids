@@ -3,7 +3,7 @@ using System.Collections;
 
 public class moves : MonoBehaviour {
 
-
+    public float speed = 0.1f;
     public float rot = 1f;
     
 
@@ -30,6 +30,19 @@ public class moves : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.S))
             this.transform.rotation *= Quaternion.Euler(-rot, 0, 0);
+
+        if (Input.GetKey(KeyCode.LeftShift)){
+            this.transform.position += speed * transform.forward;
+            if (Input.GetKeyDown(KeyCode.LeftShift)) speed += 2;
+
+        }
+
+
+        if (Input.GetKey(KeyCode.LeftControl)) {
+            this.transform.position -= speed * transform.forward;
+            if (Input.GetKeyDown(KeyCode.LeftControl)) speed += 2;
+        }
+            
 
     }
 }
