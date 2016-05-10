@@ -14,7 +14,7 @@ public class Shoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.Space)  || Input.GetMouseButtonDown(0))  {
+		if (Input.GetKeyDown(KeyCode.Space)  || Input.GetMouseButtonDown(1))  {
 
             /*
             bullet.transform.position=this.transform.position;
@@ -32,18 +32,19 @@ public class Shoot : MonoBehaviour {
 
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "bullet") {
-            print("Bullet");
-        }
+        /* if (other.tag == "bullet") {
+             print("Bullet");
+         }
 
-        if (other.tag == "rock"){
-            print("Rock");
-            Destroy(other.gameObject);
-        }
+         if (other.tag == "rock"){
+             print("Rock");
+             Destroy(other.gameObject);
+         }
 
-        else {
-            Destroy(this.gameObject);
-        }
+         else {
+             Destroy(this.gameObject);
+         }*/
+        Destroy(other.gameObject);
 
     }
 }

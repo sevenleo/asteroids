@@ -18,7 +18,7 @@ public class MouseMove : MonoBehaviour {
 
         Vector3 delta = (Input.mousePosition - center) / Screen.height;
 
-        if (Input.GetMouseButton(1)) {
+        if (Input.GetMouseButton(0)) {
             transform.Rotate(-delta.y * Time.deltaTime * speed, delta.x * Time.deltaTime * speed, 0);
         }
     }

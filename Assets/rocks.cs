@@ -14,6 +14,9 @@ public class rocks : MonoBehaviour {
         rockA = Instantiate(rock, new Vector3(Random.value * distance, Random.value * distance, Random.value * distance), transform.rotation) as Rigidbody;
         rockA = Instantiate(rock, new Vector3(Random.value * distance, Random.value * distance, Random.value * distance), transform.rotation) as Rigidbody;
         rockA = Instantiate(rock, new Vector3(Random.value * distance, Random.value * distance, Random.value * distance), transform.rotation) as Rigidbody;
+        rockA = Instantiate(rock, new Vector3(Random.value * distance, Random.value * distance, Random.value * distance), transform.rotation) as Rigidbody;
+        rockA = Instantiate(rock, new Vector3(Random.value * distance, Random.value * distance, Random.value * distance), transform.rotation) as Rigidbody;
+        rockA = Instantiate(rock, new Vector3(Random.value * distance, Random.value * distance, Random.value * distance), transform.rotation) as Rigidbody;
 
 
     }
