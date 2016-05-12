@@ -14,8 +14,6 @@ public class MouseMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float power = Input.GetAxis("Mouse ScrollWheel");
-
         Vector3 delta = (Input.mousePosition - center) / Screen.height;
 
         if (Input.GetMouseButton(0)) {

@@ -6,8 +6,6 @@ public class moveSpeed : MonoBehaviour {
     public float speed = 0.1f;
     public GameObject ship;
    
-    Vector3 impulse;
-
     void Start () {
         
     }
@@ -15,8 +13,6 @@ public class moveSpeed : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-        impulse = new Vector3(0, 0, speed);
 
         if (Input.GetKey(KeyCode.LeftControl)) {
             //this.transform.position -= speed * transform.forward;

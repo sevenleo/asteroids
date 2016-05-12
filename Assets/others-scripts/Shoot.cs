@@ -4,29 +4,25 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour {
 	public Rigidbody bullet;
-    public Rigidbody ship;
-    public float shootspeed = 10.0f;
+   // public Rigidbody ship;
+    public float shootspeed = 1000.0f;
     
     // Use this for initialization
     void Start () {
-        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), ship.GetComponent<Collider>());
+        //Physics.IgnoreCollision(bullet.GetComponent<Collider>(), ship.GetComponent<Collider>());
+        
     }
 
     // Update is called once per frame
     void Update () {
 
-		if (Input.GetKeyDown(KeyCode.Space)  || Input.GetMouseButtonDown(1))  {
-            Rigidbody bulletinstace = Instantiate(bullet, ship.transform.position, ship.transform.rotation) as Rigidbody;
+		if (Input.GetKeyUp(KeyCode.Space)  || Input.GetMouseButtonUp(1))  {
+            Rigidbody bulletinstace = Instantiate(bullet, GameObject.FindWithTag("ship").transform.position, GameObject.FindWithTag("ship").transform.rotation) as Rigidbody;
             bulletinstace.velocity = transform.forward * shootspeed;
+            
+            Destroy(bulletinstace, 5);
         }
     }
 
 
-    void OnTriggerEnter(Collider other) {
-      
-        Destroy(other.gameObject);
-
-
-
-    }
 }

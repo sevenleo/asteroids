@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 public class moves : MonoBehaviour {
 
     public Light turbo;
+    public Camera cam;
     bool turboTF = false;
     public float speed = 0.01f;
     public float rot = 1f;
+    bool fixedrotation = false;
     
 
     void Start () {
@@ -23,22 +25,29 @@ public class moves : MonoBehaviour {
 
         if (turboTF) {
             turbo.GetComponent<Light>().color = Color.green;
-            speed = 2.5f;
-            rot = 1f;
+            speed = 3.5f;
+            rot = 1.5f;
         }
         else
         {
             turbo.GetComponent<Light>().color = Color.white;
-            speed = 0.5f;
-            rot = 0.5f;
+            speed = 0.8f;
+            rot = 0.6f;
         }
 
 
-        if (Input.GetKey(KeyCode.A))
-            this.transform.rotation *= Quaternion.Euler(0, 0, rot);
+        if (Input.GetKey(KeyCode.CapsLock))        {
+            fixedrotation = !fixedrotation;
+        }
 
-        if (Input.GetKey(KeyCode.D))
-            this.transform.rotation *= Quaternion.Euler(0, 0, -rot);
+        if (fixedrotation)        {
+            if (Input.GetKey(KeyCode.A))
+                this.transform.rotation *= Quaternion.Euler(0, 0, rot);
+
+            if (Input.GetKey(KeyCode.D))
+                this.transform.rotation *= Quaternion.Euler(0, 0, -rot);
+        }
+        
 
         if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
             this.transform.rotation *= Quaternion.Euler(0, rot, 0);
@@ -46,19 +55,19 @@ public class moves : MonoBehaviour {
         if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
             this.transform.rotation *= Quaternion.Euler(0, -rot, 0);
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
             this.transform.rotation *= Quaternion.Euler(rot, 0, 0);
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
             this.transform.rotation *= Quaternion.Euler(-rot, 0, 0);
 
 
-        if (Input.GetKey(KeyCode.W))        {
+        if (Input.GetKey(KeyCode.UpArrow))        {
             this.transform.position += speed * transform.up;
 
         }
 
-        if (Input.GetKey(KeyCode.S))        {
+        if (Input.GetKey(KeyCode.DownArrow))        {
             this.transform.position -= speed * transform.up;
         }
 
