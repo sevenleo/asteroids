@@ -26,11 +26,7 @@ public class Shoot : MonoBehaviour {
       
         Destroy(other.gameObject);
 
-        if (other.tag == "rock"){
-            
-        }
 
-        
 
     }
 }
