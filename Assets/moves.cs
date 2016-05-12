@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class moves : MonoBehaviour {
 
-    public float speed = 0.1f;
+    public Light turbo;
+    bool turboTF = false;
+    public float speed = 0.01f;
     public float rot = 1f;
     
 
@@ -12,6 +15,24 @@ public class moves : MonoBehaviour {
 	}
 	
 	void Update () {
+        if (Input.GetKey(KeyCode.T))
+        {
+            turboTF = !turboTF;
+            
+        }
+
+        if (turboTF) {
+            turbo.GetComponent<Light>().color = Color.green;
+            speed = 2.5f;
+            rot = 1f;
+        }
+        else
+        {
+            turbo.GetComponent<Light>().color = Color.white;
+            speed = 0.5f;
+            rot = 0.5f;
+        }
+
 
         if (Input.GetKey(KeyCode.A))
             this.transform.rotation *= Quaternion.Euler(0, 0, rot);
@@ -51,8 +72,21 @@ public class moves : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftControl)) {
             this.transform.position -= speed * transform.forward;
             if (Input.GetKeyDown(KeyCode.LeftControl)) speed += 0.5f;
+            turbo.GetComponent<Light>().color = Color.red;
         }
             
+
+    }
+    
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "Stone_5")
+        {
+            SceneManager.LoadScene("scene1");
+        }
+        
+
 
     }
 }
