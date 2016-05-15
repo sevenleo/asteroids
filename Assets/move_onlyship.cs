@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class move_onlyship : MonoBehaviour {
     public float rot = 1f;
     // Use this for initialization
     void Start () {
-        Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindWithTag("ship").GetComponent<Collider>());
+       
 
     }
 
@@ -16,5 +17,20 @@ public class move_onlyship : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.D))
             this.transform.rotation *= Quaternion.Euler(0, 0, rot);
+
+        
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        /*
+        if (other.tag == "rock" || other.gameObject.name =="rock")
+        {
+            SceneManager.LoadScene("scene1");
+        }*/
+
+
+
     }
 }

@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class moves : MonoBehaviour {
 
+    public GameObject ship;
     public Light turbo;
-    public Camera cam;
+    
     bool turboTF = false;
     public float speed = 0.01f;
     public float rot = 1f;
@@ -13,8 +14,9 @@ public class moves : MonoBehaviour {
     
 
     void Start () {
-	
-	}
+        GetComponent<Rigidbody>().sleepThreshold = 1f;
+
+    }
 	
 	void Update () {
         if (Input.GetKey(KeyCode.T))
@@ -44,7 +46,7 @@ public class moves : MonoBehaviour {
             if (Input.GetKey(KeyCode.A))
                 this.transform.rotation *= Quaternion.Euler(0, 0, rot);
 
-            if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D))
                 this.transform.rotation *= Quaternion.Euler(0, 0, -rot);
         }
         
@@ -52,13 +54,13 @@ public class moves : MonoBehaviour {
         if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
             this.transform.rotation *= Quaternion.Euler(0, rot, 0);
 
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
             this.transform.rotation *= Quaternion.Euler(0, -rot, 0);
 
         if (Input.GetKey(KeyCode.W))
             this.transform.rotation *= Quaternion.Euler(rot, 0, 0);
 
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
             this.transform.rotation *= Quaternion.Euler(-rot, 0, 0);
 
 
@@ -67,35 +69,30 @@ public class moves : MonoBehaviour {
 
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))        {
+        else if (Input.GetKey(KeyCode.DownArrow))        {
             this.transform.position -= speed * transform.up;
         }
 
-
-        if (Input.GetKey(KeyCode.LeftShift)){
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
             this.transform.position += speed * transform.forward;
-            if (Input.GetKeyDown(KeyCode.LeftShift)) speed += 0.5f;
+            //this.GetComponent<Rigidbody>().AddForce(transform.forward, ForceMode.Force);
 
         }
 
-        if (Input.GetKey(KeyCode.LeftControl)) {
+        else if (Input.GetKey(KeyCode.LeftControl))
+        {
             this.transform.position -= speed * transform.forward;
-            if (Input.GetKeyDown(KeyCode.LeftControl)) speed += 0.5f;
             turbo.GetComponent<Light>().color = Color.red;
+            //this.GetComponent<Rigidbody>().AddForce(-transform.forward, ForceMode.Force);
+
         }
-            
+        else
+        {
+            GetComponent<Rigidbody>().Sleep();
+        }
 
     }
     
-    void OnTriggerEnter(Collider other)
-    {
 
-        if (other.tag == "Stone_5")
-        {
-            SceneManager.LoadScene("scene1");
-        }
-        
-
-
-    }
 }

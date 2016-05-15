@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 public class colisor_tiro : MonoBehaviour {
 
     // Use this for initialization
+    
     void Start () {
+        Debug.Log("Disparei");
+        Destroy(this.gameObject, 10);
     }
 
 	
 	// Update is called once per frame
 	void Update () {
 
-
-  
-	
 	}
 
     void OnTriggerEnter(Collider other)
@@ -28,8 +28,8 @@ public class colisor_tiro : MonoBehaviour {
         }
         if (other.gameObject.tag == "bullet")
         {
-            Destroy(other.gameObject);
-            Debug.Log("---sorry");
+            Destroy(this.gameObject);
+            Debug.Log("brothers 4ever");
         }
         else if (other.gameObject.tag != "ship")
         {
