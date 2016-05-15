@@ -30,7 +30,7 @@ public class move_onlyship : MonoBehaviour {
         if (other.tag == "rock" || other.gameObject.name =="rock")
         {
             //Destroy(this.gameObject);
-            //SceneManager.LoadScene("score");
+            SceneManager.LoadScene("gameover");
         }
 
 
