@@ -3,24 +3,30 @@ using System.Collections;
 
 public class rocks : MonoBehaviour {
 
-    int quantidade = 500;
+    int quantidade = 1000;
     public GameObject stone;
-    //GameObject[] rock;
-    GameObject rock;
+    GameObject[] rock;
     int stones = 0;
+    private float ControlTime;
+    private float ControlTimeRate = 0.1f;
 
     void Start () {
-        rock = Instantiate(stone, Vector3.zero, Quaternion.identity) as GameObject;
-        //rock = new GameObject[quantidade];
+        ControlTime = Time.time + ControlTimeRate;
+        rock = new GameObject[quantidade];
 
-        while (stones < quantidade)        {
-            //rock[stones] =Instantiate(stone, Vector3.zero, Quaternion.identity) as GameObject;
-            rock = Instantiate(stone, Vector3.zero, Quaternion.identity) as GameObject;
-            stones++;
-        }
+
         
     }
 
     void Update () {
-    }
+
+        if (Time.time > ControlTime && stones < quantidade)
+        {
+            ControlTime = Time.time + ControlTimeRate;
+            rock[stones] = Instantiate(stone, Vector3.zero, Quaternion.identity) as GameObject;
+            stones++;
+
+        }
+
+        }
 }

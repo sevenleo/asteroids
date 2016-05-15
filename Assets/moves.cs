@@ -6,7 +6,8 @@ public class moves : MonoBehaviour {
 
     public GameObject ship;
     public Light turbo;
-    
+    private float ControlTime;
+    private float ControlTimeRate = 0.1f;
     bool turboTF = false;
     public float speed = 0.01f;
     public float rot = 1f;
@@ -19,8 +20,9 @@ public class moves : MonoBehaviour {
     }
 	
 	void Update () {
-        if (Input.GetKey(KeyCode.T))
+        if (Input.GetKey(KeyCode.T) && Time.time > ControlTime)
         {
+            ControlTime = Time.time + ControlTimeRate;
             turboTF = !turboTF;
             
         }
@@ -38,7 +40,9 @@ public class moves : MonoBehaviour {
         }
 
 
-        if (Input.GetKey(KeyCode.CapsLock))        {
+        if (Input.GetKey(KeyCode.CapsLock) && Time.time > ControlTime)
+        {
+            ControlTime = Time.time + ControlTimeRate;
             fixedrotation = !fixedrotation;
         }
 

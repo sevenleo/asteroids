@@ -5,22 +5,24 @@ using System.Collections;
 public class Shoot : MonoBehaviour {
 	public Rigidbody bullet;
    // public Rigidbody ship;
-    public float shootspeed = 10000.0f;
-    
+    public float shootspeed = 1.0f;
+    private float nextFire;
+    private float fireRate = 0.1f;
+
+
     // Use this for initialization
     void Start () {
-        //Physics.IgnoreCollision(bullet.GetComponent<Collider>(), ship.GetComponent<Collider>());
-
     }
 
     // Update is called once per frame
     void Update () {
 
-		if (Input.GetKey(KeyCode.Space)  || Input.GetMouseButton(1))  {
-            
+		if ( (Input.GetKey(KeyCode.Space)  || Input.GetMouseButton(1) ) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
             Rigidbody bulletinstace = Instantiate(bullet, this.transform.position, this.transform.rotation) as Rigidbody;
-            //bulletinstace.velocity = transform.forward * shootspeed*-1;
-            bulletinstace.AddForce(transform.forward * shootspeed *-1, ForceMode.VelocityChange);
+           
+            bulletinstace.AddForce(transform.forward * shootspeed *-1, ForceMode.Impulse);
         }
     }
 
