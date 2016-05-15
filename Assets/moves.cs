@@ -28,7 +28,7 @@ public class moves : MonoBehaviour {
         }
 
         if (turboTF) {
-            turbo.GetComponent<Light>().color = Color.green;
+            turbo.GetComponent<Light>().color = Color.red;
             speed = 3.5f;
             rot = 1.5f;
         }
@@ -87,7 +87,6 @@ public class moves : MonoBehaviour {
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             this.transform.position -= speed * transform.forward;
-            turbo.GetComponent<Light>().color = Color.red;
             //this.GetComponent<Rigidbody>().AddForce(-transform.forward, ForceMode.Force);
 
         }

@@ -2,8 +2,12 @@
 using System.Collections;
 
 public class rocks : MonoBehaviour {
+    
+  
+   public static int destroyeds { get; set; }
 
-    int quantidade = 1000;
+
+int quantidade = 1000;
     public GameObject stone;
     GameObject[] rock;
     int stones = 0;
@@ -13,9 +17,10 @@ public class rocks : MonoBehaviour {
     void Start () {
         ControlTime = Time.time + ControlTimeRate;
         rock = new GameObject[quantidade];
+        rocks.destroyeds = 0;
 
 
-        
+
     }
 
     void Update () {
@@ -28,5 +33,7 @@ public class rocks : MonoBehaviour {
 
         }
 
-        }
+    }
+
+    
 }

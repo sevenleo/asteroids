@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class move_onlyship : MonoBehaviour {
     public float rot = 1f;
@@ -18,7 +19,8 @@ public class move_onlyship : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
             this.transform.rotation *= Quaternion.Euler(0, 0, rot);
 
-        
+        GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" + this.transform.position;
+
 
     }
 
@@ -27,7 +29,7 @@ public class move_onlyship : MonoBehaviour {
         
         if (other.tag == "rock" || other.gameObject.name =="rock")
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
             //SceneManager.LoadScene("score");
         }
 

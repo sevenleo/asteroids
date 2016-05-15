@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class colisor_tiro : MonoBehaviour {
 
     // Use this for initialization
-    
+    public GameObject explosion;
+
     void Start () {
-        Debug.Log("Disparei");
+        explosion.SetActive(false);
         Destroy(this.gameObject, 10);
     }
 
@@ -20,21 +20,19 @@ public class colisor_tiro : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
-        if (other.tag == "terrain" || other.tag == "sun" || other.tag == "star")
+        if (other.gameObject.tag == "terrain" || other.gameObject.tag == "sun" || other.gameObject.tag == "star")
         {
             Destroy(this.gameObject);
-            Debug.Log("Me matou");
+            Debug.Log(other.gameObject.tag +" me matou");
 
         }
-        if (other.gameObject.tag == "bullet")
-        {
-            Destroy(this.gameObject);
-            Debug.Log("brothers 4ever");
-        }
-        else if (other.gameObject.tag != "ship")
+        else if (other.gameObject.tag != "universe" && other.gameObject.tag != "ship" && other.gameObject.tag != "bullet")
         {
             Destroy(other.gameObject);
-            Debug.Log("matei");
+            explosion.SetActive(true);
+            Debug.Log("matei um "+ other.gameObject.tag);
+            rocks.destroyeds += 1;
+            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" +rocks.destroyeds +" ateróides destruidos";
         }
 
         
