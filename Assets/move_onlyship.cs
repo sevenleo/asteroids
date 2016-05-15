@@ -24,11 +24,12 @@ public class move_onlyship : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        /*
+        
         if (other.tag == "rock" || other.gameObject.name =="rock")
         {
-            SceneManager.LoadScene("scene1");
-        }*/
+            Destroy(this.gameObject);
+            //SceneManager.LoadScene("score");
+        }
 
 
 
