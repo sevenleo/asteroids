@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class move_onlyship : MonoBehaviour {
+    public GameObject trail;
     public float rot = 3f;
     private float ControlTime;
     private float ControlTimeRate = 1f;
@@ -30,16 +31,7 @@ public class move_onlyship : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
             this.transform.rotation *= Quaternion.Euler(0, 0, rot);
 
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftControl)))
-        {
-            
-            GetComponent<AudioSource>().volume = 100;
-        }
-        else if (Time.time > ControlTime)
-        {
-            ControlTime = Time.time + ControlTimeRate;
-            GetComponent<AudioSource>().volume = 0;
-        }
+      
         //GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" + this.transform.position;
 
 
@@ -48,15 +40,15 @@ public class move_onlyship : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         
-        if (other.tag == "rock" || other.gameObject.name =="rock")
+        if (other.tag == "rock"  || other.tag == "terrain" || other.tag == "sun" || other.tag == "star")
         {
             //Destroy(this.gameObject);
             SceneManager.LoadScene("gameover");
         }
 
-        if (other.tag == "universe" || other.gameObject.name == "universe")
+        if (other.tag == "universe" )
         {
-            
+            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Animar o retorno";
         }
 
         }

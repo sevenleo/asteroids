@@ -2,8 +2,9 @@
 using UnityEngine.UI;
 
 public class rocking : MonoBehaviour {
+
     public GameObject universe;
-    float safedistance = 10.0f;
+    float safedistance;
     float distance = 200.0f;
     float force = 1000f;
     int rotate = 360;
@@ -15,6 +16,7 @@ public class rocking : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        safedistance = distance * 0.30f;
 
         this.gameObject.GetComponent<AudioSource>().Stop();
 
@@ -39,8 +41,10 @@ public class rocking : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Vector3.Distance(ship_position, this.transform.position) < safedistance){
+        if (Vector3.Distance(GameObject.FindWithTag("ship").transform.position, this.transform.position) < safedistance)
+        {
             GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroid chegando";
+            GameObject.FindGameObjectWithTag("pointer").transform.LookAt(this.transform.position);
         }
     }
 

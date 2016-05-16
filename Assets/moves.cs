@@ -6,35 +6,47 @@ public class moves : MonoBehaviour {
 
     
     public GameObject ship;
+    public GameObject shipTrailGo;
+    public GameObject shipTrailBack;
+    //this.gameObject.GetComponent<Animation>().Play("goBack");
+
     public Light turbo;
-    private float ControlTime;
-    private float ControlTimeRate = 0.1f;
+
     bool turboTF = false;
+    bool autoaccelerate = false;
+    bool fixedrotation = false;
     public float speed = 0.01f;
     public float rot = 1f;
-    bool fixedrotation = false;
-    
+    private float ControlTime;
+    private float ControlTimeRate = 0.1f;
+
 
     void Start () {
         ControlTime = Time.time;
         GetComponent<Rigidbody>().sleepThreshold = 1f;
 
     }
-	
-	void Update () {
+
+    void Update() {
         if (Input.GetKey(KeyCode.T) && Time.time > ControlTime)
         {
             ControlTime = Time.time + ControlTimeRate;
             turboTF = !turboTF;
-            
+
         }
 
         if (Input.GetKey(KeyCode.Z) && Time.time > ControlTime)
         {
-
-            this.gameObject.GetComponent<Animation>().Play("goBack");
+            ControlTime = Time.time + ControlTimeRate;
+            autoaccelerate = !autoaccelerate;
         }
+        if (autoaccelerate)
+        {
+            ship.GetComponent<AudioSource>().volume = 100;
+            shipTrailGo.GetComponent<Renderer>().enabled = true;
+            this.transform.position += speed * transform.forward;
 
+        }
         if (turboTF) {
             turbo.GetComponent<Light>().color = Color.red;
             speed = 3.5f;
@@ -90,21 +102,26 @@ public class moves : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftShift))
         {
             this.transform.position += speed * transform.forward;
-            
-            //this.GetComponent<Rigidbody>().AddForce(transform.forward, ForceMode.Force);
+            ship.GetComponent<AudioSource>().volume = 100;
+            shipTrailGo.GetComponent<Renderer>().enabled = true;
 
         }
 
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             this.transform.position -= speed * transform.forward;
+            shipTrailBack.GetComponent<Renderer>().enabled = true;
+            ship.GetComponent<AudioSource>().volume = 100;
             
-            //this.GetComponent<Rigidbody>().AddForce(-transform.forward, ForceMode.Force);
-
         }
-        else
+
+        else if (Time.time > ControlTime)
         {
             GetComponent<Rigidbody>().Sleep();
+            ControlTime = Time.time + ControlTimeRate;
+            ship.GetComponent<AudioSource>().volume = 0;
+            shipTrailGo.GetComponent<Renderer>().enabled = false;
+            shipTrailBack.GetComponent<Renderer>().enabled = false;
         }
 
     }
