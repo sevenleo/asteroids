@@ -16,6 +16,7 @@ public class moves : MonoBehaviour {
     
 
     void Start () {
+        ControlTime = Time.time;
         GetComponent<Rigidbody>().sleepThreshold = 1f;
 
     }
@@ -84,9 +85,12 @@ public class moves : MonoBehaviour {
             this.transform.position -= speed * transform.up;
         }
 
+        
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             this.transform.position += speed * transform.forward;
+            
             //this.GetComponent<Rigidbody>().AddForce(transform.forward, ForceMode.Force);
 
         }
@@ -94,6 +98,7 @@ public class moves : MonoBehaviour {
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             this.transform.position -= speed * transform.forward;
+            
             //this.GetComponent<Rigidbody>().AddForce(-transform.forward, ForceMode.Force);
 
         }

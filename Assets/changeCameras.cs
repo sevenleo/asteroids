@@ -19,6 +19,14 @@ public class changeCameras : MonoBehaviour {
         {
             cam_3rd.enabled = !cam_3rd.enabled;
             cam_1st.enabled = !cam_1st.enabled;
+            if (cam_1st.enabled)
+            {
+                GameObject.FindGameObjectWithTag("aim").GetComponent<Renderer>().enabled = false;
+            }
+            else if (cam_3rd.enabled)
+            {
+                GameObject.FindGameObjectWithTag("aim").GetComponent<Renderer>().enabled = true;
+            }
         }
     }
 }

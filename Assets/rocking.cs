@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class rocking : MonoBehaviour {
     public GameObject universe;
     float safedistance = 10.0f;
-    float distance = 500.0f;
+    float distance = 200.0f;
     float force = 1000f;
     int rotate = 360;
     Vector3 randomforce;
@@ -15,6 +15,8 @@ public class rocking : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        this.gameObject.GetComponent<AudioSource>().Stop();
 
         ship_position = GameObject.FindWithTag("ship").transform.position;
         Random.seed = (int)System.DateTime.Now.Ticks;
@@ -42,11 +44,13 @@ public class rocking : MonoBehaviour {
         }
     }
 
+
     void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.tag == "terrain" || other.gameObject.tag == "sun" || other.gameObject.tag == "star" || other.gameObject.tag == "rock")
         {
+            this.gameObject.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
 
         }

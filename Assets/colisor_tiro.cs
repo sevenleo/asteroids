@@ -19,7 +19,6 @@ public class colisor_tiro : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.tag == "terrain" || other.gameObject.tag == "sun" || other.gameObject.tag == "star")
         {
             Destroy(this.gameObject);
