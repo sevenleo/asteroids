@@ -1,25 +1,34 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class rocking : MonoBehaviour {
     public GameObject universe;
+    float safedistance = 10.0f;
     float distance = 500.0f;
     float force = 1000f;
-    int rotate = 180;
+    int rotate = 360;
     Vector3 randomforce;
-    Vector3 safedistance;
-    float RaioDoUniverso;
+    Vector3 position;
+    float UniverseRadius;
+    float adaptRadius = 1000 * 1/2;
+    Vector3 ship_position;
 
     // Use this for initialization
     void Start () {
+
+        ship_position = GameObject.FindWithTag("ship").transform.position;
         Random.seed = (int)System.DateTime.Now.Ticks;
 
-        RaioDoUniverso = GameObject.FindGameObjectWithTag("universe").GetComponent<SphereCollider>().radius;
-        distance = RaioDoUniverso * 900 ;
-        safedistance = GameObject.FindWithTag("ship").transform.position + new Vector3(RaioDoUniverso * 30, RaioDoUniverso * 30, RaioDoUniverso * 30);
+        UniverseRadius = GameObject.FindGameObjectWithTag("universe").GetComponent<SphereCollider>().radius;
+        distance = UniverseRadius * adaptRadius ;
 
-        this.transform.position= safedistance + new Vector3(Random.Range(-distance, distance), Random.Range(-distance, distance), Random.Range(-distance, distance));
-        this.transform.rotation= new Quaternion(Random.Range(-rotate, rotate), Random.Range(-rotate, rotate), Random.Range(-rotate, rotate), rotate);
+        position = new Vector3(Random.Range(-distance, distance), Random.Range(-distance, distance), Random.Range(-distance, distance));
+  
+        while (Vector3.Distance(ship_position, position) < safedistance) {
+            position = new Vector3(Random.Range(-distance, distance), Random.Range(-distance, distance), Random.Range(-distance, distance));
+        }
+        this.transform.position = position;
+        this.transform.rotation= new Quaternion(Random.Range(0, rotate), Random.Range(0, rotate), Random.Range(0, rotate), Random.Range(0, rotate));
 
         randomforce = new Vector3(Random.Range(-force, force), Random.Range(-force, force), Random.Range(-force, force));
         GetComponent<Rigidbody>().AddForce(randomforce, ForceMode.Force);
@@ -28,7 +37,9 @@ public class rocking : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (Vector3.Distance(ship_position, this.transform.position) < safedistance){
+            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroid chegando";
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -50,4 +61,6 @@ public class rocking : MonoBehaviour {
 
         }
     }
+
+
 }

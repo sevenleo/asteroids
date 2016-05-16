@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class moves : MonoBehaviour {
 
+    
     public GameObject ship;
     public Light turbo;
     private float ControlTime;
@@ -25,6 +26,12 @@ public class moves : MonoBehaviour {
             ControlTime = Time.time + ControlTimeRate;
             turboTF = !turboTF;
             
+        }
+
+        if (Input.GetKey(KeyCode.Z) && Time.time > ControlTime)
+        {
+
+            this.gameObject.GetComponent<Animation>().Play("goBack");
         }
 
         if (turboTF) {

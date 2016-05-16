@@ -19,7 +19,7 @@ public class move_onlyship : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
             this.transform.rotation *= Quaternion.Euler(0, 0, rot);
 
-        GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" + this.transform.position;
+        //GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" + this.transform.position;
 
 
     }
@@ -33,7 +33,10 @@ public class move_onlyship : MonoBehaviour {
             SceneManager.LoadScene("gameover");
         }
 
+        if (other.tag == "universe" || other.gameObject.name == "universe")
+        {
+            
+        }
 
-
-    }
+        }
 }

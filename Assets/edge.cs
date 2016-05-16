@@ -16,8 +16,9 @@ public class edge : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerExit(Collider other)
     {
+        //other.GetComponent<Animation>().Play("goBack");
 
     }
 }
