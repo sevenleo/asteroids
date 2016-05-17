@@ -22,6 +22,7 @@ public class gameover : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.X))
         {
+            Application.Quit();
             
         }
     }
