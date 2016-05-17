@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class rocking : MonoBehaviour {
 
@@ -18,7 +20,7 @@ public class rocking : MonoBehaviour {
     void Start () {
         safedistance = distance * 0.30f;
 
-        this.gameObject.GetComponent<AudioSource>().Stop();
+        //this.gameObject.GetComponent<AudioSource>().Stop();
 
         ship_position = GameObject.FindWithTag("ship").transform.position;
         Random.seed = (int)System.DateTime.Now.Ticks;
@@ -45,6 +47,7 @@ public class rocking : MonoBehaviour {
         {
             GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroid chegando";
             GameObject.FindGameObjectWithTag("pointer").transform.LookAt(this.transform.position);
+            GameObject.FindGameObjectWithTag("pointer").transform.rotation *= Quaternion.Euler(90,0, 0);
         }
     }
 
