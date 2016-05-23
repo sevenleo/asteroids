@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class move_onlyship : MonoBehaviour {
+    bool goback = false;
     public GameObject trail;
     public float rot = 3f;
     private float ControlTime;
@@ -18,6 +19,12 @@ public class move_onlyship : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+        if (goback)        {
+            //GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "*Volte!";
+            GameObject.FindGameObjectWithTag("pointer").transform.LookAt(Vector3.zero);
+            GameObject.FindGameObjectWithTag("pointer").transform.rotation *= Quaternion.Euler(90, 0, 0);
+        }
 
         if (Input.GetKey(KeyCode.CapsLock) && Time.time > ControlTime)
         {
@@ -46,7 +53,7 @@ public class move_onlyship : MonoBehaviour {
 
         if (other.tag == "universe")
         {
-            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "ENTRANDO";
+            goback = false;
         }
     }
 
@@ -55,8 +62,8 @@ public class move_onlyship : MonoBehaviour {
     {
         if (other.tag == "universe" )
         {
-            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "SAINDO";
-
+            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "SAINDO DA ZONA SEGURA";
+            goback = true;
             ControlTime = Time.time + ControlTimeRate;
             GameObject.FindGameObjectWithTag("MainCamera").transform.RotateAround(GameObject.FindGameObjectWithTag("MainCamera").transform.position, Vector3.up, 180);
 
