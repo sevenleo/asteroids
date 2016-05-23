@@ -9,8 +9,10 @@ public class gameover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        this.GetComponent<Text>().text = "Você destruiu " + rocks.destroyeds + " ateróides";
+
+
+        GameObject.FindGameObjectWithTag("gameoverscoreA").GetComponent<Text>().text = "Surgiram " + rocks.stones + " asteróides";
+        GameObject.FindGameObjectWithTag("gameoverscoreB").GetComponent<Text>().text = "Você destruiu " + rocks.destroyeds; 
 
         if (Input.GetKey(KeyCode.P)){
             SceneManager.LoadScene("start");
