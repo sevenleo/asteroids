@@ -5,21 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class gameover : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-        SceneManager.UnloadScene("scene1");
-    }
+
 	
 	// Update is called once per frame
 	void Update () {
         
-        this.GetComponent<Text>().text = "Asteroids 3D\n\n\n" 
-                                    + "Você destruiu " + rocks.destroyeds + " ateróides"
-                                    +"\n\nPressione espaço para jogar novamente ou X para terminar";
+        this.GetComponent<Text>().text = "Você destruiu " + rocks.destroyeds + " ateróides";
 
-        if (Input.GetKey(KeyCode.Space)){
-            SceneManager.LoadScene("scene1");
+        if (Input.GetKey(KeyCode.P)){
+            SceneManager.LoadScene("start");
         }
+
         if (Input.GetKey(KeyCode.X))
         {
             Application.Quit();
