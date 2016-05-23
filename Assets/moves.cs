@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class moves : MonoBehaviour {
 
@@ -18,16 +19,22 @@ public class moves : MonoBehaviour {
     public float speed = 0.01f;
     public float rot = 1f;
     private float ControlTime;
-    private float ControlTimeRate = 0.1f;
+    private float ControlTimeRate =0.1f;
 
 
     void Start () {
         ControlTime = Time.time;
-        GetComponent<Rigidbody>().sleepThreshold = 1f;
 
     }
 
     void Update() {
+
+        if (Input.GetKey(KeyCode.R) && Time.time > ControlTime)
+        {
+            ControlTime = Time.time + ControlTimeRate;
+            GameObject.FindGameObjectWithTag("MainCamera").transform.RotateAround(GameObject.FindGameObjectWithTag("MainCamera").transform.position, Vector3.up, 180);
+
+        }
         if (Input.GetKey(KeyCode.T) && Time.time > ControlTime)
         {
             ControlTime = Time.time + ControlTimeRate;
@@ -117,14 +124,19 @@ public class moves : MonoBehaviour {
 
         else if (Time.time > ControlTime)
         {
-            GetComponent<Rigidbody>().Sleep();
             ControlTime = Time.time + ControlTimeRate;
             ship.GetComponent<AudioSource>().volume = 0;
             shipTrailGo.GetComponent<Renderer>().enabled = false;
             shipTrailBack.GetComponent<Renderer>().enabled = false;
         }
 
+
+   
     }
-    
+
+    void OnTriggerExit(Collider other)
+    {
+
+    }
 
 }

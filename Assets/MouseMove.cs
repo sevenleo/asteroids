@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MouseMove : MonoBehaviour {
-    bool mousehoulder = false;
+    bool mousehoulder = true;
     private float ControlTime;
     private float ControlTimeRate = 0.2f;
     float speed = 150.0f;

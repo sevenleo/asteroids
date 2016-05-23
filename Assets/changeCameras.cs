@@ -5,7 +5,7 @@ public class changeCameras : MonoBehaviour {
 
     public Camera cam_3rd;
     public Camera cam_1st;
- 
+    
     void Start()
     {
         cam_3rd.enabled = true;

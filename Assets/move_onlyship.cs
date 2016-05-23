@@ -30,9 +30,7 @@ public class move_onlyship : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.D))
             this.transform.rotation *= Quaternion.Euler(0, 0, rot);
-
-      
-        //GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" + this.transform.position;
+   
 
 
     }
@@ -46,10 +44,26 @@ public class move_onlyship : MonoBehaviour {
             SceneManager.LoadScene("gameover");
         }
 
+        if (other.tag == "universe")
+        {
+            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "ENTRANDO";
+        }
+    }
+
+
+    void OnTriggerExit(Collider other)
+    {
         if (other.tag == "universe" )
         {
-            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Animar o retorno";
-        }
+            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "SAINDO";
+
+            ControlTime = Time.time + ControlTimeRate;
+            GameObject.FindGameObjectWithTag("MainCamera").transform.RotateAround(GameObject.FindGameObjectWithTag("MainCamera").transform.position, Vector3.up, 180);
+
+            
 
         }
+    }
+
+       
 }

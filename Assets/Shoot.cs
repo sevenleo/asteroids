@@ -25,14 +25,24 @@ public class Shoot : MonoBehaviour {
             explosion.SetActive(true);
         }
 
-
-        if ( (Input.GetKey(KeyCode.Space)  || Input.GetMouseButton(0) ) && Time.time > nextFire)
+    
+        if ( (Input.GetKey(KeyCode.Space)  /*|| Input.GetMouseButton(0)*/ ) && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             Rigidbody bulletinstace = Instantiate(bullet, this.transform.position , this.transform.rotation) as Rigidbody;
            
             bulletinstace.AddForce(transform.forward * shootspeed *-1, ForceMode.Impulse);
         }
+    }
+
+     public void shoot()
+    {
+        
+            nextFire = Time.time + fireRate;
+            Rigidbody bulletinstace = Instantiate(bullet, this.transform.position, this.transform.rotation) as Rigidbody;
+
+            bulletinstace.AddForce(transform.forward * shootspeed * -1, ForceMode.Impulse);
+       
     }
 
 
