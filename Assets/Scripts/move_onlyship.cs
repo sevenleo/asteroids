@@ -14,17 +14,13 @@ public class move_onlyship : MonoBehaviour {
     // Use this for initialization
     void Start () {
         ControlTime = Time.time;
-        GameObject.FindGameObjectWithTag("ship2").GetComponent<Renderer>().enabled = false;
-        GameObject.FindGameObjectWithTag("ship2trail").GetComponent<Renderer>().enabled = false;
-        GameObject.FindGameObjectWithTag("ship2cannon").GetComponent<Renderer>().enabled = false;
-
+       
     }
 
     // Update is called once per frame
     void Update () {
 
         if (goback)        {
-            //GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "*Volte!";
             GameObject.FindGameObjectWithTag("pointer").transform.LookAt(Vector3.zero);
             GameObject.FindGameObjectWithTag("pointer").transform.rotation *= Quaternion.Euler(90, 0, 0);
         }
@@ -47,11 +43,6 @@ public class move_onlyship : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.tag.EndsWith("Bonus"))
-        {
-            GameObject.FindGameObjectWithTag("Bonus").GetComponent<AudioSource>().Play();
-        }
 
         if (other.tag == "rock"  || other.tag == "terrain" || other.tag == "sun" || other.tag == "star")
         {
@@ -77,41 +68,6 @@ public class move_onlyship : MonoBehaviour {
         }
         
 
-        
-
-
-        else if (other.tag == "LifeBonus") {
-            Destroy(other.gameObject);
-            levels.lifes++;
-        }
-        else if (other.tag == "SpeedBonus")  {
-            Destroy(other.gameObject);
-            levels.turbo = true;
-        }
-        else if (other.tag == "TimeBonus")        {
-            Destroy(other.gameObject);
-            PlayerPrefs.SetString("level", "easy");   
-        }
-        else if (other.tag == "DeadBonus")        {
-            Destroy(other.gameObject);
-            PlayerPrefs.SetString("level", "hard");
-            levels.lifes = 1;
-        }
-        else if (other.tag == "FireBonus")        {
-            Destroy(other.gameObject);
-            levels.fireRate *= 2f;
-        }
-        else if (other.tag == "StarBonus")        {
-            Destroy(other.gameObject);
-            GameObject.FindGameObjectWithTag("ship").GetComponent<Renderer>().enabled = false;
-            GameObject.FindGameObjectWithTag("ship2").GetComponent<Renderer>().enabled = true;
-            GameObject.FindGameObjectWithTag("ship2trail").GetComponent<Renderer>().enabled = true;
-            GameObject.FindGameObjectWithTag("ship2cannon").GetComponent<Renderer>().enabled = true;
-            levels.fireRate *= 2f;
-            levels.turbo = true;
-            levels.lifes++;
-        }
-
      
     }
 
@@ -124,8 +80,6 @@ public class move_onlyship : MonoBehaviour {
             goback = true;
             ControlTime = Time.time + ControlTimeRate;
             GameObject.FindGameObjectWithTag("MainCamera").transform.RotateAround(GameObject.FindGameObjectWithTag("MainCamera").transform.position, Vector3.up, 180);
-
-            
 
         }
     }

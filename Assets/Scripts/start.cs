@@ -29,6 +29,14 @@ public class start : MonoBehaviour {
         Application.Quit();
     }
 
+    public void UnloadInstructions()
+    {
+        SceneManager.LoadScene("start");
+    }
+    public void Instructions()
+    {
+        SceneManager.LoadScene("Instructions");
+    }
 
     void Update()
     {
@@ -45,8 +53,13 @@ public class start : MonoBehaviour {
         else if (Input.GetKey(KeyCode.R))
             StartRunnerGame();
 
-        else if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Q))
+        else if (Input.GetKey(KeyCode.X))
             ExitGame();
+
+        else if (Input.GetKey(KeyCode.Q))
+            UnloadInstructions();
+        else if (Input.GetKey(KeyCode.I))
+            Instructions();
 
     }
 }
