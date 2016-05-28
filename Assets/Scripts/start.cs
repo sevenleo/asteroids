@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class start : MonoBehaviour {
+
+    public Toggle touch;
 
     public void StartEasyGame()
     {
@@ -40,6 +43,13 @@ public class start : MonoBehaviour {
 
     void Update()
     {
+        
+        if (touch.isOn)
+            PlayerPrefs.SetString("touch", "on");
+        else
+            PlayerPrefs.SetString("touch", "off");
+
+
 
         if (Input.GetKey(KeyCode.F))
             StartEasyGame();

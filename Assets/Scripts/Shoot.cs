@@ -20,22 +20,26 @@ public class Shoot : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-    
-        if ( (Input.GetKey(KeyCode.Space)  || Input.GetMouseButton(0) ) && Time.time > nextFire)
+        if (PlayerPrefs.GetString("touch") == "off")
         {
-            nextFire = Time.time + levels.fireRate;
-            Rigidbody bulletinstace = Instantiate(bullet, this.transform.position , this.transform.rotation) as Rigidbody;
-           
-            bulletinstace.AddForce(transform.forward * shootspeed *-1, ForceMode.Impulse);
+            if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && Time.time > nextFire)
+            {
+                shoot();
+
+            }
+        }else
+        {
+            if ((Input.GetKey(KeyCode.Space)) && Time.time > nextFire)
+            {
+                shoot();
+
+            }
         }
 
 
         if ((Input.GetKey(KeyCode.B) ) && Time.time > nextFire)
         {
-            nextFire = Time.time + levels.fireRate;
-            Rigidbody bulletinstace = Instantiate(bullet, this.transform.position, this.transform.rotation) as Rigidbody;
-
-            bulletinstace.AddForce(transform.forward * shootspeed, ForceMode.Impulse);
+            shootback();
         }
 
     }
@@ -51,4 +55,12 @@ public class Shoot : MonoBehaviour {
     }
 
 
-}
+    public void shootback()
+    {
+        nextFire = Time.time + levels.fireRate;
+        Rigidbody bulletinstace = Instantiate(bullet, this.transform.position, this.transform.rotation) as Rigidbody;
+
+        bulletinstace.AddForce(transform.forward * shootspeed, ForceMode.Impulse);
+    }
+
+    }

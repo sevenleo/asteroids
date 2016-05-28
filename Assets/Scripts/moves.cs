@@ -13,7 +13,6 @@ public class moves : MonoBehaviour {
     public Light turbo;
 
     bool turboTF = false;
-    bool autoaccelerate = false;
     bool fixedrotation = false;
     public float speed = 0.01f;
     public float rot = 1f;
@@ -106,12 +105,12 @@ public class moves : MonoBehaviour {
 
 
         ////////////////ACELADOR AUTOMATICO////////////////
-        if (Input.GetKey(KeyCode.Z) && Time.time > ControlTime)
+        if (Input.GetKey(KeyCode.Z) && (Time.time > ControlTime) )
         {
             ControlTime = Time.time + ControlTimeRate;
-            autoaccelerate = !autoaccelerate;
+            levels.autoaccelerate = !levels.autoaccelerate;
         }
-        if (autoaccelerate)
+        if (levels.autoaccelerate)
         {
             ship.GetComponent<AudioSource>().volume = 100;
             shipTrailGo.GetComponent<Renderer>().enabled = true;
@@ -144,6 +143,16 @@ public class moves : MonoBehaviour {
 
 
     }
-
+    ////////////////TOUCHSCREEN////////////////
+    public void touchleft() { this.transform.rotation *= Quaternion.Euler(0, -rot, 0); }
+    public void touchright() { this.transform.rotation *= Quaternion.Euler(0, rot, 0); }
+    public void touchup()
+    {
+        this.transform.rotation *= Quaternion.Euler(rot, 0, 0);
+    }
+    public void touchdown()
+    {
+        this.transform.rotation *= Quaternion.Euler(-rot, 0, 0);
+    }
 
 }

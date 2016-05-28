@@ -10,10 +10,11 @@ namespace CnControls
     /// </summary>
     public class SimpleButton : MonoBehaviour
 
+        
 
-        // some weird stuff here
-        // we have to support Unity Remote with Multi Touch (which is not currently supported with uGUI)
-        // so we just completely override the input system for the Editor, making it behave like it would normally do in builds
+    // some weird stuff here
+    // we have to support Unity Remote with Multi Touch (which is not currently supported with uGUI)
+    // so we just completely override the input system for the Editor, making it behave like it would normally do in builds
 #if !UNITY_EDITOR
         , IPointerUpHandler, IPointerDownHandler
 #endif
@@ -22,7 +23,6 @@ namespace CnControls
         /// The name of the button
         /// </summary>
         public string ButtonName = "Jump";
-
         
 
 
@@ -89,10 +89,7 @@ namespace CnControls
         {
             if (_virtualButton.IsPressed)
             {
-                float speed = 0.01f;
-                GameObject.FindGameObjectWithTag("ship").transform.position += speed * transform.forward;
-                GameObject.FindGameObjectWithTag("ship").GetComponent<AudioSource>().volume = 100;
-                GameObject.FindGameObjectWithTag("shipTrailGo").GetComponent<Renderer>().enabled = true;
+               
             }
 
         }

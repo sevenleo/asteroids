@@ -21,12 +21,17 @@ public class MouseMove : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.L) && Time.time > ControlTime)
         {
-            ControlTime = Time.time + ControlTimeRate;
-            mousehoulder= !mousehoulder;
+            lockmouse();
         }
 
         if (Input.GetMouseButton(1) || mousehoulder) {
             transform.Rotate(-delta.y * Time.deltaTime * speed, delta.x * Time.deltaTime * speed, 0);
         }
+    }
+
+    public void lockmouse()
+    {
+        ControlTime = Time.time + ControlTimeRate;
+        mousehoulder = !mousehoulder;
     }
 }

@@ -13,11 +13,14 @@ public class levels : MonoBehaviour {
     public static float RocksControlTimeRate { get; set; }
     public static float fireRate { get; set; }
     public static bool turbo { get; set; }
+    public static bool autoaccelerate { get; set; }
+    
 
     // Use this for initialization
     void Start () {
         lifes = 1;
         turbo = false;
+        autoaccelerate = false;
 
         if (PlayerPrefs.HasKey("level"))
         {
