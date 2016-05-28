@@ -6,19 +6,28 @@ public class start : MonoBehaviour {
 
     public void StartEasyGame()
     {
-        SceneManager.LoadScene("easy");
+        PlayerPrefs.SetString("level", "easy");
+        SceneManager.LoadScene("scene1");
     }
     public void StartMediumGame()
     {
-        SceneManager.LoadScene("medium");
+        PlayerPrefs.SetString("level", "medium");
+        SceneManager.LoadScene("scene1");
     }
     public void StartHardGame()
     {
-        SceneManager.LoadScene("hard");
+        PlayerPrefs.SetString("level", "hard");
+        SceneManager.LoadScene("scene1");
     }
     public void StartRunnerGame()
     {
-        SceneManager.LoadScene("runner");
+        PlayerPrefs.SetString("level", "runner");
+        SceneManager.LoadScene("scene1");
+    }
+    public void ExitGame()
+    {
+        PlayerPrefs.SetString("level", "runner");
+        SceneManager.LoadScene("scene1");
     }
 
 
@@ -26,19 +35,19 @@ public class start : MonoBehaviour {
     {
 
         if (Input.GetKey(KeyCode.F))
-            SceneManager.LoadScene("easy");
+            StartEasyGame();
 
-        else if (Input.GetKey(KeyCode.M) )
-            SceneManager.LoadScene("medium");
+        else if (Input.GetKey(KeyCode.M))
+            StartMediumGame();
 
-        else if (Input.GetKey(KeyCode.D) )
-                SceneManager.LoadScene("hard");
+        else if (Input.GetKey(KeyCode.D))
+            StartHardGame();
 
         else if (Input.GetKey(KeyCode.R))
-            SceneManager.LoadScene("runner");
+            StartRunnerGame();
 
-        else if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Q) )
-            Application.Quit();
+        else if (Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.Q))
+            ExitGame();
 
     }
 }
