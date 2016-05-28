@@ -35,7 +35,7 @@ public class moves : MonoBehaviour {
         }
         */
 
-        if (Input.GetKey(KeyCode.T) && Time.time > ControlTime)
+        if (levels.turbo && Input.GetKey(KeyCode.T) && Time.time > ControlTime)
         {
             ControlTime = Time.time + ControlTimeRate;
             turboTF = !turboTF;
@@ -53,6 +53,7 @@ public class moves : MonoBehaviour {
             this.transform.position += speed * transform.forward;
 
         }
+
         if (turboTF) {
             turbo.GetComponent<Light>().color = Color.red;
             speed = 3.5f;

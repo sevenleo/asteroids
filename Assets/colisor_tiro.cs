@@ -27,13 +27,16 @@ public class colisor_tiro : MonoBehaviour {
             Debug.Log(other.gameObject.tag +" me matou");
 
         }
+
+        else if (other.gameObject.tag.EndsWith("Bonus") || other.gameObject.tag.Contains("ship")) { Debug.Log("Bingo!!!"); }
+
         else if (other.gameObject.tag != "universe" && other.gameObject.tag != "ship" && other.gameObject.tag != "bullet")
         {
             Destroy(other.gameObject);
-            //explosion.SetActive(true);
-            Debug.Log("matei um "+ other.gameObject.tag);
+            explosion.SetActive(true);
+            Debug.Log("matei um " + other.gameObject.tag);
             rocks.destroyeds += 1;
-            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" +rocks.destroyeds +" ateróides destruidos";
+            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" + rocks.destroyeds + " ateróides destruidos";
             Bonus.newBonus(other.gameObject.transform.position, other.gameObject.transform.rotation);
         }
 

@@ -29,13 +29,13 @@ public class rocking : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-    safedistance = levels.safedistance;
-    distance = levels.distance;
-    force = levels.force;
-    rotate = levels.rotate;
+        safedistance = levels.safedistance;
+        distance = levels.distance;
+        force = levels.force;
+        rotate = levels.rotate;
 
 
-    safedistance *= distance;
+        safedistance *= distance;
 
 
         ship_position = GameObject.FindWithTag("ship").transform.position;

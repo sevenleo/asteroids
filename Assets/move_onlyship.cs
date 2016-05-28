@@ -14,6 +14,9 @@ public class move_onlyship : MonoBehaviour {
     // Use this for initialization
     void Start () {
         ControlTime = Time.time;
+        GameObject.FindGameObjectWithTag("ship2").GetComponent<Renderer>().enabled = false;
+        GameObject.FindGameObjectWithTag("ship2trail").GetComponent<Renderer>().enabled = false;
+        GameObject.FindGameObjectWithTag("ship2cannon").GetComponent<Renderer>().enabled = false;
 
     }
 
@@ -54,11 +57,42 @@ public class move_onlyship : MonoBehaviour {
             }
             else SceneManager.LoadScene("gameover");
         }
-
-        if (other.tag == "universe")
+        else if (other.tag == "universe")
         {
             goback = false;
         }
+
+
+
+        else if (other.tag == "LifeBonus") {
+            Destroy(other.gameObject);
+            levels.lifes++;
+        }
+        else if (other.tag == "SpeedBonus")  {
+            Destroy(other.gameObject);
+            levels.turbo = true;
+        }
+        else if (other.tag == "TimeBonus")        {
+            Destroy(other.gameObject);
+            PlayerPrefs.SetString("level", "easy");   
+        }
+        else if (other.tag == "DeadBonus")        {
+            Destroy(other.gameObject);
+            PlayerPrefs.SetString("level", "hard");
+        }
+        else if (other.tag == "FireBonus")        {
+            Destroy(other.gameObject);
+            levels.fireRate *= 2f;
+        }
+        else if (other.tag == "StarBonus")        {
+            Destroy(other.gameObject);
+            GameObject.FindGameObjectWithTag("ship").GetComponent<Renderer>().enabled = false;
+            GameObject.FindGameObjectWithTag("ship2").GetComponent<Renderer>().enabled = true;
+            GameObject.FindGameObjectWithTag("ship2trail").GetComponent<Renderer>().enabled = true;
+            GameObject.FindGameObjectWithTag("ship2cannon").GetComponent<Renderer>().enabled = true;
+        }
+
+     
     }
 
 

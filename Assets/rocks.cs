@@ -45,8 +45,6 @@ public class rocks : MonoBehaviour {
         else
             Application.Quit();
 
-
-
         ControlTime = Time.time + RocksControlTimeRate;
                 
         rock = new GameObject[RocksQuantity];
