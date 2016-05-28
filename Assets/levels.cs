@@ -75,8 +75,6 @@ public class levels : MonoBehaviour {
                 force = 0;
                 rotate = 360;
                 fireRate = 0.1f;
-                RocksQuantity = 100;
-                RocksControlTimeRate = 0.1f;
             }
             else if (level == "medium")
             {
@@ -86,8 +84,6 @@ public class levels : MonoBehaviour {
                 force = 1000f;
                 rotate = 360;
                 fireRate = 0.2f;
-                RocksQuantity = 400;
-                RocksControlTimeRate = 0.1f;
             }
             else if (level == "hard")
             {
@@ -97,8 +93,6 @@ public class levels : MonoBehaviour {
                 force = 5000f;
                 rotate = 360;
                 fireRate = 0.4f;
-                RocksQuantity = 1000;
-                RocksControlTimeRate = 0.1f;
                 GameObject.FindGameObjectWithTag("pointer").GetComponent<Renderer>().enabled = false;
             }
         }

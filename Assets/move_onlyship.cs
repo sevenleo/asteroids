@@ -47,7 +47,12 @@ public class move_onlyship : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        
+
+        if (other.gameObject.tag.EndsWith("Bonus"))
+        {
+            GameObject.FindGameObjectWithTag("Bonus").GetComponent<AudioSource>().Play();
+        }
+
         if (other.tag == "rock"  || other.tag == "terrain" || other.tag == "sun" || other.tag == "star")
         {
             //Destroy(this.gameObject);
@@ -61,7 +66,9 @@ public class move_onlyship : MonoBehaviour {
         {
             goback = false;
         }
+        
 
+        
 
 
         else if (other.tag == "LifeBonus") {

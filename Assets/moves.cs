@@ -19,6 +19,7 @@ public class moves : MonoBehaviour {
     public float rot = 1f;
     private float ControlTime;
     private float ControlTimeRate =0.1f;
+    private float turboStarted;
 
 
     void Start () {
@@ -37,6 +38,7 @@ public class moves : MonoBehaviour {
 
         if (levels.turbo && Input.GetKey(KeyCode.T) && Time.time > ControlTime)
         {
+            turboStarted = Time.time;
             ControlTime = Time.time + ControlTimeRate;
             turboTF = !turboTF;
         }
@@ -58,6 +60,7 @@ public class moves : MonoBehaviour {
             turbo.GetComponent<Light>().color = Color.red;
             speed = 3.5f;
             rot = 1.5f;
+            if (Time.time > turboStarted+10f) turboTF = false;
         }
         else
         {

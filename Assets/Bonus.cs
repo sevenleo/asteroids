@@ -69,6 +69,7 @@ public  class Bonus : MonoBehaviour {
         {
             hits = 0;
             bonuses[cont] = Instantiate(bonus, Position, Rotation) as GameObject;
+
             
         }
         cont++;
