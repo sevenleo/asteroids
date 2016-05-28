@@ -23,7 +23,6 @@ public class changeCameras : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.C))
         {
             st_3rd();
-
         }
 
         if (!cam_back.enabled && !cam_1st.enabled && Input.GetKeyDown(KeyCode.V))

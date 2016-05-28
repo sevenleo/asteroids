@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace CnControls
 {
@@ -22,7 +23,7 @@ namespace CnControls
         /// <summary>
         /// The name of the button
         /// </summary>
-        public string ButtonName = "Jump";
+        public string ButtonName = "shoot";
         
 
 
@@ -69,7 +70,6 @@ namespace CnControls
         public void OnPointerUp(PointerEventData eventData)
         {
             _virtualButton.Release();
-
         }
 
         /// <summary>
@@ -80,7 +80,6 @@ namespace CnControls
         public void OnPointerDown(PointerEventData eventData)
         {
             _virtualButton.Press();
-      
 
 
         }
@@ -89,7 +88,6 @@ namespace CnControls
         {
             if (_virtualButton.IsPressed)
             {
-               
             }
 
         }
