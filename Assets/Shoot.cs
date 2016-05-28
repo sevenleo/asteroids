@@ -9,21 +9,16 @@ public class Shoot : MonoBehaviour {
 
     public float shootspeed = 1.0f;
     private float nextFire;
-    private float fireRate = 0.1f;
+    private float fireRate;
 
 
     // Use this for initialization
     void Start () {
-        explosion.SetActive(false);
-
+        fireRate = levels.fireRate;
     }
 
     // Update is called once per frame
     void Update () {
-
-        if (Input.GetKey(KeyCode.B)) {
-            explosion.SetActive(true);
-        }
 
     
         if ( (Input.GetKey(KeyCode.Space)  || Input.GetMouseButton(0) ) && Time.time > nextFire)
@@ -33,6 +28,16 @@ public class Shoot : MonoBehaviour {
            
             bulletinstace.AddForce(transform.forward * shootspeed *-1, ForceMode.Impulse);
         }
+
+
+        if ((Input.GetKey(KeyCode.B) ) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Rigidbody bulletinstace = Instantiate(bullet, this.transform.position, this.transform.rotation) as Rigidbody;
+
+            bulletinstace.AddForce(transform.forward * shootspeed, ForceMode.Impulse);
+        }
+
     }
 
      public void shoot()

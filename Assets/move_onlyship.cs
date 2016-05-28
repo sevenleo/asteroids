@@ -48,7 +48,8 @@ public class move_onlyship : MonoBehaviour {
         if (other.tag == "rock"  || other.tag == "terrain" || other.tag == "sun" || other.tag == "star")
         {
             //Destroy(this.gameObject);
-            SceneManager.LoadScene("gameover");
+            if (levels.lifes > 0) { levels.lifes--; }
+            else SceneManager.LoadScene("gameover");
         }
 
         if (other.tag == "universe")

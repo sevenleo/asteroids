@@ -5,22 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class rocking : MonoBehaviour {
 
-    public GameObject universe;
-    float safedistance;
-    float distance = 200.0f;
-    float force = 1000f;
-    int rotate = 360;
+
+    /*
+       public float safedistance = 0.30f;
+    public float distance = 200.0f;
+    public float force = 1000f;
+    public int rotate = 360;
+    
+         */
+
+    float safedistance ;
+    float distance;
+    float force;
+    int rotate;
+    
+    float UniverseRadius;
+    float adaptRadius = 1000 * 1 / 2;
+
     Vector3 randomforce;
     Vector3 position;
-    float UniverseRadius;
-    float adaptRadius = 1000 * 1/2;
     Vector3 ship_position;
 
     // Use this for initialization
     void Start () {
-        safedistance = distance * 0.30f;
 
-        //this.gameObject.GetComponent<AudioSource>().Stop();
+    safedistance = levels.safedistance;
+    distance = levels.distance;
+    force = levels.force;
+    rotate = levels.rotate;
+
+
+    safedistance *= distance;
+
 
         ship_position = GameObject.FindWithTag("ship").transform.position;
         Random.seed = (int)System.DateTime.Now.Ticks;

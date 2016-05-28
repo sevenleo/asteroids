@@ -11,7 +11,7 @@ public class stats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GameObject.FindGameObjectWithTag("ingamelifes").GetComponent<Text>().text = "Vidas:" + "?";
-        GameObject.FindGameObjectWithTag("ingamescore").GetComponent<Text>().text = "Destruidos: " + rocks.destroyeds +"/"+ rocks.stones+"/"+ rocks.quantidade;
+        //GameObject.FindGameObjectWithTag("ingamelifes").GetComponent<Text>().text = "Vidas:" + levels.lifes;
+        GameObject.FindGameObjectWithTag("ingamescore").GetComponent<Text>().text = "Destruidos: " + rocks.destroyeds + "/" + rocks.stones + "/" + levels.RocksQuantity;
     }
 }

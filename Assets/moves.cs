@@ -9,7 +9,6 @@ public class moves : MonoBehaviour {
     public GameObject ship;
     public GameObject shipTrailGo;
     public GameObject shipTrailBack;
-    //this.gameObject.GetComponent<Animation>().Play("goBack");
 
     public Light turbo;
 
@@ -28,18 +27,18 @@ public class moves : MonoBehaviour {
     }
 
     void Update() {
-
+        /*rotate
         if (Input.GetKey(KeyCode.R) && Time.time > ControlTime)
         {
             ControlTime = Time.time + ControlTimeRate;
             GameObject.FindGameObjectWithTag("MainCamera").transform.RotateAround(GameObject.FindGameObjectWithTag("MainCamera").transform.position, Vector3.up, 180);
-
         }
+        */
+
         if (Input.GetKey(KeyCode.T) && Time.time > ControlTime)
         {
             ControlTime = Time.time + ControlTimeRate;
             turboTF = !turboTF;
-
         }
 
         if (Input.GetKey(KeyCode.Z) && Time.time > ControlTime)
