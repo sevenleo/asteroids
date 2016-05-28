@@ -52,6 +52,7 @@ public class levels : MonoBehaviour {
                 fireRate = 0.3f;
                 RocksQuantity = 1000;
                 RocksControlTimeRate = 0.1f;
+                GameObject.FindGameObjectWithTag("pointer").GetComponent<Renderer>().enabled = false;
             }
         }
     }
