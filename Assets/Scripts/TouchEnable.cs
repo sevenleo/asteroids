@@ -10,11 +10,13 @@ public class TouchEnable : MonoBehaviour {
         {
             touchscreen.SetActive(true);
             levels.autoaccelerate = true;
+            levels.mousehoulder = false;
         }
         else
         {
             touchscreen.SetActive(false);
             levels.autoaccelerate = false;
+            levels.mousehoulder = true;
         }
 
     }

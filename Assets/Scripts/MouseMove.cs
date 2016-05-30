@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MouseMove : MonoBehaviour {
-    bool mousehoulder = true;
+    //bool mousehoulder = true;
     private float ControlTime;
     private float ControlTimeRate = 0.2f;
     float speed = 150.0f;
@@ -24,7 +24,7 @@ public class MouseMove : MonoBehaviour {
             lockmouse();
         }
 
-        if (Input.GetMouseButton(1) || mousehoulder) {
+        if (Input.GetMouseButton(1) || levels.mousehoulder) {
             transform.Rotate(-delta.y * Time.deltaTime * speed, delta.x * Time.deltaTime * speed, 0);
         }
     }
@@ -32,6 +32,6 @@ public class MouseMove : MonoBehaviour {
     public void lockmouse()
     {
         ControlTime = Time.time + ControlTimeRate;
-        mousehoulder = !mousehoulder;
+        levels.mousehoulder = !levels.mousehoulder;
     }
 }

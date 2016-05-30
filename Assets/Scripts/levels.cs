@@ -14,10 +14,12 @@ public class levels : MonoBehaviour {
     public static float fireRate { get; set; }
     public static bool turbo { get; set; }
     public static bool autoaccelerate { get; set; }
-    
+    public static bool mousehoulder { get; set; }
+
 
     // Use this for initialization
     void Start () {
+        mousehoulder = true;
         lifes = 1;
         turbo = false;
         autoaccelerate = false;
