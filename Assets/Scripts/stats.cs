@@ -15,6 +15,15 @@ public class stats : MonoBehaviour {
         GameObject.FindGameObjectWithTag("ingamelifes").GetComponent<Text>().text = "Vidas:" + levels.lifes;
         GameObject.FindGameObjectWithTag("ingamescore").GetComponent<Text>().text = "Destruidos: " + rocks.destroyeds + "/" + rocks.stones + "/" + levels.RocksQuantity;
         if (Input.GetKey(KeyCode.X))
-            SceneManager.LoadScene("start");
+            backtomainmenu();
+    }
+
+    public void accelerator()
+    {
+        levels.autoaccelerate = !levels.autoaccelerate;
+    }
+    public void backtomainmenu()
+    {
+        SceneManager.LoadScene("start");
     }
 }
