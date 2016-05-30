@@ -157,15 +157,16 @@ public class moves : MonoBehaviour {
     }
 
     ////////////////TOUCHSCREEN////////////////
-    public void touchleft() { this.transform.rotation *= Quaternion.Euler(0, -rot, 0); }
-    public void touchright() { this.transform.rotation *= Quaternion.Euler(0, rot, 0); }
+    float touchadjust = 20;
+    public void touchleft() { this.transform.rotation *= Quaternion.Euler(0, touchadjust *- rot, 0); }
+    public void touchright() { this.transform.rotation *= Quaternion.Euler(0, touchadjust * rot, 0); }
     public void touchup()
     {
-        this.transform.rotation *= Quaternion.Euler(rot, 0, 0);
+        this.transform.rotation *= Quaternion.Euler(touchadjust * rot, 0, 0);
     }
     public void touchdown()
     {
-        this.transform.rotation *= Quaternion.Euler(-rot, 0, 0);
+        this.transform.rotation *= Quaternion.Euler(touchadjust * -rot, 0, 0);
     }
 
 }
