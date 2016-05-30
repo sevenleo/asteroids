@@ -1,21 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace CnControls
 {
-
     /// <summary>
     /// Simple button class
     /// Handles press, hold and release, just like a normal button
     /// </summary>
     public class SimpleButton : MonoBehaviour
-
-        
-
-    // some weird stuff here
-    // we have to support Unity Remote with Multi Touch (which is not currently supported with uGUI)
-    // so we just completely override the input system for the Editor, making it behave like it would normally do in builds
+        // some weird stuff here
+        // we have to support Unity Remote with Multi Touch (which is not currently supported with uGUI)
+        // so we just completely override the input system for the Editor, making it behave like it would normally do in builds
 #if !UNITY_EDITOR
         , IPointerUpHandler, IPointerDownHandler
 #endif
@@ -23,9 +18,7 @@ namespace CnControls
         /// <summary>
         /// The name of the button
         /// </summary>
-        public string ButtonName = "shoot";
-        
-
+        public string ButtonName = "Jump";
 
         /// <summary>
         /// Utility object that is registered in the system
@@ -38,8 +31,6 @@ namespace CnControls
         private void Awake()
         {
             gameObject.AddComponent<ButtonInputHelper>();
-
-
         }
 #endif
         
@@ -51,7 +42,6 @@ namespace CnControls
         {
             _virtualButton = _virtualButton ?? new VirtualButton(ButtonName);
             CnInputManager.RegisterVirtualButton(_virtualButton);
-            
         }
 
         /// <summary>
@@ -80,18 +70,6 @@ namespace CnControls
         public void OnPointerDown(PointerEventData eventData)
         {
             _virtualButton.Press();
-
-
         }
-
-        public void update()
-        {
-            if (_virtualButton.IsPressed)
-            {
-            }
-
-        }
-
-        
     }
 }

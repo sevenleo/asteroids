@@ -21,7 +21,7 @@ namespace UnityStandardAssets.Copy._2D
             if (!m_Jump)
             {
                 // Read the jump input in Update so button presses aren't missed.
-                m_Jump = CnInputManager.GetButtonDown("Jump");
+                m_Jump = CnInputManager.GetButtonDown("leob");
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using CnControls;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,11 +31,12 @@ public class moves : MonoBehaviour {
 
         //////////////// MOVIMENTOS ////////////////
 
-        if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
-            this.transform.rotation *= Quaternion.Euler(0, rot, 0);
-
-        else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
+        
+        if (Input.GetKey(KeyCode.A) )
             this.transform.rotation *= Quaternion.Euler(0, -rot, 0);
+
+        else if (Input.GetKey(KeyCode.D))
+            this.transform.rotation *= Quaternion.Euler(0, rot, 0);
 
         if (Input.GetKey(KeyCode.W))
             this.transform.rotation *= Quaternion.Euler(rot, 0, 0);
@@ -61,10 +63,11 @@ public class moves : MonoBehaviour {
 
         if (fixedrotation)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
+                
                 this.transform.rotation *= Quaternion.Euler(0, 0, rot);
 
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
                 this.transform.rotation *= Quaternion.Euler(0, 0, -rot);
         }
 
@@ -143,6 +146,16 @@ public class moves : MonoBehaviour {
 
 
     }
+
+    public void FixedUpdate()
+    {
+        float v = CnInputManager.GetAxis("Vertical");
+        float h = CnInputManager.GetAxis("Horizontal");
+        this.transform.rotation *= Quaternion.Euler(v * rot, 0, 0);
+        this.transform.rotation *= Quaternion.Euler(0, h * rot, 0);
+
+    }
+
     ////////////////TOUCHSCREEN////////////////
     public void touchleft() { this.transform.rotation *= Quaternion.Euler(0, -rot, 0); }
     public void touchright() { this.transform.rotation *= Quaternion.Euler(0, rot, 0); }

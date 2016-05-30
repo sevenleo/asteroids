@@ -31,10 +31,10 @@ public class move_onlyship : MonoBehaviour {
             fixedrotation = !fixedrotation;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.RightArrow))
             this.transform.rotation *= Quaternion.Euler(0, 0, -rot);
 
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
             this.transform.rotation *= Quaternion.Euler(0, 0, rot);
    
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using CnControls;
 using System.Collections;
 
 
@@ -22,14 +23,25 @@ public class Shoot : MonoBehaviour {
 
         if (PlayerPrefs.GetString("touch") == "off")
         {
-            if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && Time.time > nextFire)
+            if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)  ) && Time.time > nextFire)
             {
                 shoot();
 
             }
-        }else
+        }
+        else
         {
-            if ((Input.GetKey(KeyCode.Space)) && Time.time > nextFire)
+            if (CnInputManager.GetButtonDown("shootback")) shootback();
+
+            if (CnInputManager.GetButton("shoot"))
+            {
+
+                
+                shoot();
+            }
+            
+
+            if ( (Input.GetKey(KeyCode.Space) ) && Time.time > nextFire)
             {
                 shoot();
 
