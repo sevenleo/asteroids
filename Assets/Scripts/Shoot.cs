@@ -31,17 +31,10 @@ public class Shoot : MonoBehaviour {
         }
         else
         {
-            if (CnInputManager.GetButtonDown("shootback")) shootback();
-
-            if (CnInputManager.GetButton("shoot"))
-            {
-
-                
-                shoot();
-            }
+            
             
 
-            if ( (Input.GetKey(KeyCode.Space) ) && Time.time > nextFire)
+            if (CnInputManager.GetButton("shoot") || (Input.GetKey(KeyCode.Space) ) && Time.time > nextFire)
             {
                 shoot();
 
@@ -49,7 +42,7 @@ public class Shoot : MonoBehaviour {
         }
 
 
-        if ((Input.GetKey(KeyCode.B) ) && Time.time > nextFire)
+        if ( (CnInputManager.GetButtonDown("shootback") || (Input.GetKey(KeyCode.B)) ) && Time.time > nextFire)
         {
             shootback();
         }
