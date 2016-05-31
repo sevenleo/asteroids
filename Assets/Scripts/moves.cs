@@ -149,10 +149,11 @@ public class moves : MonoBehaviour {
 
     public void FixedUpdate()
     {
+        float adjust = 0.3f;
         float v = CnInputManager.GetAxis("Vertical2");
         float h = CnInputManager.GetAxis("Horizontal2");
-        this.transform.rotation *= Quaternion.Euler(v * rot, 0, 0);
-        this.transform.rotation *= Quaternion.Euler(0, h * rot, 0);
+        this.transform.rotation *= Quaternion.Euler(-v *adjust* rot, 0, 0);
+        this.transform.rotation *= Quaternion.Euler(0, h * adjust * rot, 0);
 
     }
 

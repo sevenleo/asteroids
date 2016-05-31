@@ -24,9 +24,17 @@ public class MouseMove : MonoBehaviour {
             lockmouse();
         }
 
-        if (Input.GetMouseButton(1) || levels.mousehoulder) {
-            transform.Rotate(-delta.y * Time.deltaTime * speed, delta.x * Time.deltaTime * speed, 0);
-        }
+        if (PlayerPrefs.GetString("touch") == "off")
+            if (Input.GetMouseButton(1) || levels.mousehoulder) {
+                transform.Rotate(-delta.y * Time.deltaTime * speed, delta.x * Time.deltaTime * speed, 0);
+            }
+
+        if (PlayerPrefs.GetString("touch") == "on")
+            if (levels.mousehoulder)
+            {
+                transform.Rotate(-delta.y * Time.deltaTime * speed, delta.x * Time.deltaTime * speed, 0);
+            }
+
     }
 
     public void lockmouse()
