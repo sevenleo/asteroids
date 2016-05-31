@@ -36,6 +36,7 @@ public class ShipCollectBonus : MonoBehaviour {
         else if (other.tag == "TimeBonus")
         {
             Destroy(other.gameObject);
+            levels.timeLeft += 60f;
             PlayerPrefs.SetString("level", "easy");
         }
         else if (other.tag == "DeadBonus")
@@ -59,6 +60,7 @@ public class ShipCollectBonus : MonoBehaviour {
             levels.fireRate *= 2f;
             levels.turbo = true;
             levels.lifes++;
+            levels.timeLeft += 30f;
         }
 
     }

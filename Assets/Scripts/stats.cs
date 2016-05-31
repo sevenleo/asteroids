@@ -14,6 +14,7 @@ public class stats : MonoBehaviour {
 	void Update () {
         GameObject.FindGameObjectWithTag("ingamelifes").GetComponent<Text>().text = "Vidas:" + levels.lifes;
         GameObject.FindGameObjectWithTag("ingamescore").GetComponent<Text>().text = "Destruidos: " + rocks.destroyeds + "/" + rocks.stones + "/" + levels.RocksQuantity;
+        GameObject.FindGameObjectWithTag("timeleft").GetComponent<Text>().text = "Tempo: " + (int)levels.timeLeft;
         if (Input.GetKey(KeyCode.X))
             backtomainmenu();
     }

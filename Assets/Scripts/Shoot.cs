@@ -34,7 +34,7 @@ public class Shoot : MonoBehaviour {
             
             
 
-            if (CnInputManager.GetButton("shoot") || (Input.GetKey(KeyCode.Space) ) && Time.time > nextFire)
+            if ( ( CnInputManager.GetButton("shoot") || Input.GetKey(KeyCode.Space) ) && Time.time > nextFire)
             {
                 shoot();
 

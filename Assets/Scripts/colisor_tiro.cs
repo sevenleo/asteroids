@@ -36,7 +36,8 @@ public class colisor_tiro : MonoBehaviour {
             explosion.SetActive(true);
             Debug.Log("matei um " + other.gameObject.tag);
             rocks.destroyeds += 1;
-            GameObject.FindGameObjectWithTag("canvas").GetComponent<Text>().text = "Asteroids 3D\n" + rocks.destroyeds + " ateróides destruidos";
+            levels.timeLeft += 2f;
+            
             Bonus.newBonus(other.gameObject.transform.position, other.gameObject.transform.rotation);
         }
 

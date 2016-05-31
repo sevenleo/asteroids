@@ -15,7 +15,9 @@ public class levels : MonoBehaviour {
     public static bool turbo { get; set; }
     public static bool autoaccelerate { get; set; }
     public static bool mousehoulder { get; set; }
+    public static float timeLeft { get; set; }
 
+    float fixedtime = 30f;
 
     // Use this for initialization
     void Start () {
@@ -23,6 +25,8 @@ public class levels : MonoBehaviour {
         lifes = 1;
         turbo = false;
         autoaccelerate = false;
+        timeLeft = fixedtime;
+
 
         if (PlayerPrefs.HasKey("level"))
         {
@@ -107,5 +111,23 @@ public class levels : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("pointer").GetComponent<Renderer>().enabled = false;
             }
         }
+
+        ///timeLeft
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0)
+        {
+            if (lifes > 1)
+            {
+                lifes--;
+                timeLeft = fixedtime;
+            }
+            else
+            {
+                SceneManager.LoadScene("gameover");
+            }    
+             
+
+        }
+
     }
 }
