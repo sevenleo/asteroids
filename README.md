@@ -1,4 +1,21 @@
-# asteroids
+#Asteroids 3D
+#
+![asteroids3d_2.jpg](asteroids3d_2.jpg)
+
+![asteroids3d_3.jpg](asteroids3d_3.jpg)
+
+![asteroids3d_4.jpg](asteroids3d_4.jpg)
+
+![asteroids3d_5.jpg](asteroids3d_5.jpg)
+
+![asteroids3d_6.jpg](asteroids3d_6.jpg)
+
+![asteroids3d_7.jpg](asteroids3d_7.jpg)
+
+![asteroids3d_8.jpg](asteroids3d_8.jpg)
+
+![asteroids3d_9.jpg](asteroids3d_9.jpg)
+
 
 Movimento = WASD + setas + mouse 
 Atirar = Mouse Esquerdo ou Espaço
